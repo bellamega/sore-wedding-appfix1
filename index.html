@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sore Wedding</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Sore Wedding</div>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Plans</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="images/pengantin1.jpg" alt="Foto Pengantin">
+    </div>
+    <div class="hero-text">
+      <h2>We plan</h2>
+      <h1>Magical moments.</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus est sit amet velit fermentum.</p>
+    </div>
+  </section>
+
+  <section class="about-section">
+  <div class="about-content">
+    <h2 class="title">
+      ABOUT US
+    </h2>
+    <p>
+      We're Profesional<br>
+      Wedding Planner based in Bandung,<br>
+      our company was founded in 2015<br>
+      <strong>SORE WEDDING</strong> offers<br>
+      the best experience<br>
+      through creative event planning and<br>
+      management to our couples to be
+    </p>
+  </div>
+</section>
+
+   <!-- Section Gallery -->
+<section class="gallery-section">
+    <div class="gallery-header">
+    <h2>Moments <br><span>We’re Honored to Share</span></h2>
+    <p>A glimpse into the weddings we’ve lovingly created — each one a unique expression of love.</p>
+    
+  </div>
+  <div class="gallery-grid">
+    <img src="images/galeri.jpg" alt="Gallery 1">
+    <img src="images/galeri2.jpg" alt="Gallery 2">
+    <img src="images/galeri3.jpg" alt="Gallery 3">
+    <img src="images/galeri4.jpg" alt="Gallery 4">
+    <img src="images/galeri5.jpg" alt="Gallery 5">
+    <img src="images/galeri6.jpg" alt="Gallery 6">
+    <img src="images/galeri7.jpg" alt="Gallery 7">
+    <img src="images/galeri8.jpg" alt="Gallery 8">
+  </div>
+</section>
+
+
+
+
+
+<script>
+  const slides = document.querySelectorAll('.slides img');
+  let current = 0;
+
+  function changeSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  setInterval(changeSlide, 2000);
+</script>
+
+
+
+
+  <!-- POPUP MENU GOJEK STYLE -->
+  <div class="mobile-popup">
+    <a href="#">
+      <i class="fas fa-user"></i>
+      <span>About Us</span>
+    <a href="#">
+      <i class="fas fa-calendar-alt"></i>
+      <span>Plans</span>
+    </a>
+    <a href="#">
+      <i class="fas fa-images"></i>
+      <span>Portfolio</span>
+    </a>
+
+    </a>
+  </div>
+
+  
+
+</body>
+
+
+
+</html>
