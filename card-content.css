@@ -1,0 +1,84 @@
+/* Card Content Styles */
+.diamond-package-section .card-content {
+  color: #454dc4;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.diamond-package-section .card-content h3,
+.diamond-package-section .card-content h4 {
+  color: #3792ce;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.diamond-package-section .card-content p {
+  color: #0a3f70d0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.diamond-package-section .card-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.diamond-package-section .card-content li {
+  color: #07175e;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+.diamond-package-section .card-content li:before {
+  content: '✦';
+  color: #ffffff;
+  margin-right: 1rem;
+  font-size: 0.8rem;
+}
+
+.diamond-package-section .card-content .highlight {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.diamond-package-section .card-content .price {
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+/* Hover effects */
+.diamond-package-section .card-content:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .diamond-package-section .card-content {
+    padding: 1.5rem;
+  }
+  
+  .diamond-package-section .card-content h3,
+  .diamond-package-section .card-content h4 {
+    font-size: 1.5rem;
+  }
+  
+  .diamond-package-section .card-content p,
+  .diamond-package-section .card-content li {
+    font-size: 1rem;
+  }
+}

@@ -412,6 +412,126 @@ body {
 
  
 
+/* Crew Section Styles */
+.crew-section {
+  padding: 80px 5%;
+  background: rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+.crew-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.crew-header h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-family: 'Ibarra Real Nova', serif;
+}
+
+.crew-header h2 span {
+  color: #e0cfa8;
+}
+
+.crew-header p {
+  color: #d1c7b3;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.crew-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.crew-slider-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.crew-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+.crew-slider::-webkit-scrollbar { display: none; }
+.crew-slider { scrollbar-width: none; -ms-overflow-style: none; }
+
+.crew-card {
+  flex: 0 0 300px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.crew-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.crew-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.crew-info {
+  padding: 16px;
+  text-align: center;
+}
+
+.crew-info h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.crew-info .position {
+  color: #e0cfa8;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.crew-info .description {
+  color: #d1c7b3;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Crew nav buttons inside wrapper */
+.crew-prev, .crew-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: rgba(255,255,255,0.9);
+  color: #111;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.crew-prev { left: 8px; }
+.crew-next { right: 8px; }
+
 /* ===== GALLERY SECTION ===== */
 .gallery-section {
   background: url('images/background.png') no-repeat center center/cover;
@@ -1445,7 +1565,7 @@ text-shadow: 2px 2px 0 #e7c56f; /* beige terang */
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(4, 39, 116, 0.74); /* Warna overlay dengan opacity */
+  background: rgba(37, 61, 112, 0.85); /* Warna overlay dengan opacity */
   z-index: -1;
 }
 
