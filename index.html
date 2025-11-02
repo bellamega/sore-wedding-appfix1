@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sore Wedding</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="gold-package.css">
+    <link rel="stylesheet" href="platinum-vendor.css">
+    <link rel="stylesheet" href="pricelist-slider.css">
+    <link rel="stylesheet" href="diamond-package.css">
+    <link rel="stylesheet" href="card-content.css">
+    <link rel="stylesheet" href="smooth-scroll.css">
   <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -20,9 +25,17 @@
 
       <ul class="nav-links">
         <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Plans</a></li>
-        <li><a href="#">Portfolio</a></li>
         <li><a href="#">About Us</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Package</a></li>
+        <li><a href="#">Plans</a></li>
+        
+        
+        <li>
+          <a class="whatsapp-btn" href="https://wa.me/6282240480543?text=Halo%20Sore%20Wedding" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
@@ -32,46 +45,190 @@
       <img src="images/pengantin1.jpg" alt="Foto Pengantin">
     </div>
     <div class="hero-text">
-      <h2>We plan</h2>
-      <h1>Magical moments.</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus est sit amet velit fermentum.</p>
+      <h2>SERVICE QUALITY <br> EXECUTION <br> RESULT</h2>
+      <p>Creating timeless celebrations through dedication, detail <br> and love. because your day deserves perfection.</p>
     </div>
   </section>
 
-  <section class="about-section">
-  <div class="about-content">
-    <h2 class="title">
-      ABOUT US
-    </h2>
-    <p>
-      We're Profesional<br>
-      Wedding Planner based in Bandung,<br>
-      our company was founded in 2015<br>
-      <strong>SORE WEDDING</strong> offers<br>
-      the best experience<br>
-      through creative event planning and<br>
-      management to our couples to be
-    </p>
+<section id="about" class="about-section">
+  <div class="about-inner">
+    <!-- Left large card -->
+    <div class="about-left">
+      <div class="about-card">
+        <p class="sub">ABOUT US</p>
+        <div class="about-text">
+          <p>We're Professional Wedding Planner based in Bandung.</p>
+          <p>Our company was founded in 2015.</p>
+          <p>SORE WEDDING offers the best experience through creative event planning and management to our couples to be.</p>
+        </div>
+      </div>
+    </div>
+
+   
+    </div>
   </div>
 </section>
 
+
+<script>
+  // Crew slider controls
+  window.addEventListener('load', function() {
+    const crewSlider = document.getElementById('crewSlider');
+    const prev = document.getElementById('crewPrev');
+    const next = document.getElementById('crewNext');
+    if (!crewSlider || !prev || !next) return;
+
+    const cards = crewSlider.querySelectorAll('.crew-card');
+    if (!cards.length) return;
+
+    let index = 0;
+    function goTo(i) {
+      if (i < 0) index = cards.length - 1;
+      else if (i >= cards.length) index = 0;
+      else index = i;
+      const gap = parseInt(window.getComputedStyle(crewSlider).gap) || 30;
+      const cardWidth = cards[0].offsetWidth;
+      crewSlider.scrollTo({ left: index * (cardWidth + gap), behavior: 'smooth' });
+    }
+
+    const onNext = (e) => { e.preventDefault(); goTo(index + 1); };
+    const onPrev = (e) => { e.preventDefault(); goTo(index - 1); };
+    next.removeEventListener('click', onNext);
+    prev.removeEventListener('click', onPrev);
+    next.addEventListener('click', onNext);
+    prev.addEventListener('click', onPrev);
+  });
+</script>
+
+<script>
+  // Tunggu sampai halaman sepenuhnya dimuat
+  window.addEventListener("load", function() {
+    // Pastikan semua elemen yang diperlukan ada
+    const slider = document.getElementById("slider");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    if (!slider || !prevBtn || !nextBtn) {
+      console.error("Slider atau tombol navigasi tidak ditemukan");
+      return;
+    }
+
+    const cards = slider.querySelectorAll('.mini-card');
+    if (cards.length === 0) {
+      console.error("Tidak ada card yang ditemukan");
+      return;
+    }
+
+    let currentIndex = 0;
+    
+    function updateSlide(direction) {
+      // Hitung ulang cardWidth setiap kali slide diupdate
+      const cardWidth = cards[0].offsetWidth;
+      const gap = parseInt(window.getComputedStyle(slider).gap) || 24;
+      
+      if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % cards.length;
+      } else {
+        currentIndex = currentIndex === 0 ? cards.length - 1 : currentIndex - 1;
+      }
+      
+      const offset = currentIndex * (cardWidth + gap);
+      slider.scrollTo({
+        left: offset,
+        behavior: 'smooth'
+      });
+    }
+
+    // Hapus event listener yang mungkin sudah ada
+    const handleNext = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      updateSlide('next');
+    };
+
+    const handlePrev = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      updateSlide('prev');
+    };
+
+    nextBtn.removeEventListener('click', handleNext);
+    prevBtn.removeEventListener('click', handlePrev);
+
+    // Tambahkan event listener baru
+    nextBtn.addEventListener('click', handleNext);
+    prevBtn.addEventListener('click', handlePrev);
+  });
+</script>
+
+
+
+
    <!-- Section Gallery -->
-<section class="gallery-section">
-    <div class="gallery-header">
-    <h2>Moments <br><span>We’re Honored to Share</span></h2>
-    <p>A glimpse into the weddings we’ve lovingly created — each one a unique expression of love.</p>
+<section id="gallery" class="gallery-section">
+  <div class="gallery-header">
+    <h2>Moments <br><span>We're Honored to Share</span></h2>
+    <p>A glimpse into the weddings we've lovingly created — each one a unique expression of love.</p>
+  </div>
+
+  <div class="gallery-container">
+    
+
+    <div class="gallery-grid" id="galleryTrack">
+      <img src="images/galeri.jpg" alt="Gallery 1" class="gallery-item">
+      
+      <div class="video-container" id="videoContainer1">
+        <div class="play-button-overlay" id="playButton1"></div>
+        <video id="promoVideo" playsinline>
+          <source src="images/video1.mp4" type="video/mp4">
+          Browser kamu tidak mendukung video.
+        </video>
+      </div>
+
+      <script>
+        const videoContainer1 = document.getElementById('videoContainer1');
+        const video1 = document.getElementById('promoVideo');
+        const playButton1 = document.getElementById('playButton1');
+
+        function toggleVideo1() {
+          if (video1.paused) {
+            video1.play();
+            videoContainer1.classList.add('playing');
+          } else {
+            video1.pause();
+            videoContainer1.classList.remove('playing');
+          }
+        }
+
+        playButton1.addEventListener('click', toggleVideo1);
+        video1.addEventListener('click', toggleVideo1);
+        
+        video1.addEventListener('ended', () => {
+          videoContainer1.classList.remove('playing');
+        });
+      </script>
+
+      <img src="images/galeri2.jpg" alt="Gallery 2" class="gallery-item">
+      <img src="images/galeri3.jpg" alt="Gallery 3" class="gallery-item">
+      <img src="images/galeri4.jpg" alt="Gallery 4" class="gallery-item">
+      <img src="images/galeri5.jpg" alt="Gallery 5" class="gallery-item">
+      <img src="images/galeri6.jpg" alt="Gallery 6" class="gallery-item">
+      <img src="images/galeri7.jpg" alt="Gallery 7" class="gallery-item">
+      <img src="images/galeri8.jpg" alt="Gallery 8" class="gallery-item">
+    </div>
+
+    <!-- gallery nav -->
+    <button class="gallery-nav left" id="galleryPrev" aria-label="Previous slide">&#10094;</button>
+    <button class="gallery-nav right" id="galleryNext" aria-label="Next slide">&#10095;</button>
+  
+
     
   </div>
-  <div class="gallery-grid">
-    <img src="images/galeri.jpg" alt="Gallery 1">
-    <img src="images/galeri2.jpg" alt="Gallery 2">
-    <img src="images/galeri3.jpg" alt="Gallery 3">
-    <img src="images/galeri4.jpg" alt="Gallery 4">
-    <img src="images/galeri5.jpg" alt="Gallery 5">
-    <img src="images/galeri6.jpg" alt="Gallery 6">
-    <img src="images/galeri7.jpg" alt="Gallery 7">
-    <img src="images/galeri8.jpg" alt="Gallery 8">
-  </div>
+
+  
+
+  
+    
 </section>
 
 
@@ -79,173 +236,284 @@
 
 
 <script>
-  const slides = document.querySelectorAll('.slides img');
-  let current = 0;
+document.addEventListener('DOMContentLoaded', function () {
+  const gallery = document.getElementById('galleryTrack');
+  const next = document.getElementById('galleryNext');
+  const prev = document.getElementById('galleryPrev');
+  if (!gallery) return;
 
-  function changeSlide() {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
+  const getSlideWidth = () => gallery.clientWidth;
+  let index = 0;
+  const slides = Array.from(gallery.children);
+  const maxIndex = slides.length - 1;
+
+  function goTo(i) {
+    index = Math.max(0, Math.min(maxIndex, i));
+    gallery.scrollTo({ left: index * getSlideWidth(), behavior: 'smooth' });
   }
 
-  setInterval(changeSlide, 2000);
+  next.addEventListener('click', () => {
+    if (index >= maxIndex) goTo(0); else goTo(index + 1);
+  });
+  prev.addEventListener('click', () => {
+    if (index <= 0) goTo(maxIndex); else goTo(index - 1);
+  });
+
+  // resize: ensure correct position
+  window.addEventListener('resize', () => goTo(index));
+
+  // keyboard
+  gallery.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prev.click();
+    if (e.key === 'ArrowRight') next.click();
+  });
+  // make focusable for keyboard
+  gallery.setAttribute('tabindex','0');
+
+  // touch swipe
+  let startX = 0, moved = 0;
+  gallery.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    moved = 0;
+  }, { passive: true });
+  gallery.addEventListener('touchmove', (e) => {
+    moved = e.touches[0].clientX - startX;
+  }, { passive: true });
+  gallery.addEventListener('touchend', () => {
+    if (moved < -50) next.click();
+    else if (moved > 50) prev.click();
+    moved = 0;
+  });
+
+  // optional: update index on manual scroll (if user drags)
+  let scrollTimeout;
+  gallery.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const w = getSlideWidth();
+      index = Math.round(gallery.scrollLeft / w);
+    }, 80);
+  });
+});
 </script>
 
 
-<section class="pricing-section">
-  <div class="pricing-header">
-    <h2>Wedding Organizer Detail</h2>
+
+<script>
+  const slides = document.querySelectorAll('.slides img');
+  if (slides.length > 0) {  // Pastikan ada elemen slides
+    let current = 0;
+
+    function changeSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(changeSlide, 2000);
+  }
+</script>
+
+<section class="gallery-section" id="gallerySection2">
+  <div class="gallery-header">
+    <h2>More Moments <br><span>Other Highlights</span></h2>
+    <p>Additional snapshots from our events.</p>
   </div>
 
-  <!-- Tambahan daftar layanan -->
-<div class="wo-feature-list">
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12l9-5-9-5-9 5 9 5z" />
-    </svg>
-    <span>Konsultasi prepare pernikahan</span>
+  <div class="gallery-container">
+    <div class="gallery-grid" id="galleryTrack2">
+      <img src="images/pengantinky1.jpg" alt="Gallery 9" class="gallery-item">
+        <!-- Tambahkan container video disini -->
+  <div class="video-container" id="videoContainer2">
+    <div class="play-button-overlay" id="playButton2"></div>
+    <video id="promoVideo2" playsinline>
+      <source src="images/video2.mp4" type="video/mp4">
+      Browser kamu tidak mendukung video.
+    </video>
   </div>
 
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-    </svg>
-    <span>H-30 Wedding Progress</span>
-  </div>
+  <script>
+    const videoContainer2 = document.getElementById('videoContainer2');
+    const video2 = document.getElementById('promoVideo2');
+    const playButton2 = document.getElementById('playButton2');
 
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
-    </svg>
-    <span>Koordinasi penjadwalan vendor</span>
-  </div>
+    function toggleVideo2() {
+      if (video2.paused) {
+        video2.play();
+        videoContainer2.classList.add('playing');
+      } else {
+        video2.pause();
+        videoContainer2.classList.remove('playing');
+      }
+    }
 
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6 1a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-    <span>Approx 8 hours on the wedding day<br> (akad/pemberkatan dan resepsi)</span>
-  </div>
-
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20h16M4 10h16M4 6h16M4 14h16" />
-    </svg>
-    <span>Attribute: handy talky, clothes</span>
-  </div>
-
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-    <span>WhatsApp group pengantin</span>
-  </div>
-
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 00-2-2H5a2 2 0 00-2 2v4h18v-4zM7 10V5a5 5 0 0110 0v5" />
-    </svg>
-    <span>WhatsApp group family (H-2 weeks)</span>
-  </div>
-
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-    </svg>
-    <span>Pembuatan rundown acara</span>
-  </div>
-
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.657-1.343 3-3 3S6 12.657 6 11s1.343-3 3-3 3 1.343 3 3zm6 0c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z" />
-    </svg>
-    <span>Meeting keluarga 1x</span>
-  </div>
-
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 00-3-3.87M4 21v-2a4 4 0 013-3.87m7 0A4 4 0 007 10m0 0a4 4 0 004-4" />
-    </svg>
-    <span>Meeting all vendor 1x</span>
-  </div>
-
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16h8M8 12h8m-6 8h6a2 2 0 002-2V6a2 2 0 00-2-2h-6M8 8h8" />
-    </svg>
-    <span>Koordinasi pengurusan KUA</span>
-  </div>
-
-  <div class="free-bonus">
-    <strong>Free:</strong> Seserahan 10 box & Digital Invitation
-  </div>
-</div>
-
-
-  <div class="pricing-container">
-    <!-- Package 1 -->
-    <div class="pricing-card">
-      <h3>Package 1</h3>
-      <p class="price">IDR 6.500.000</p>
-
-      <ul>
-        <li>✔ 6 Crew | Valid For 100 - 300 pax</li>
-        <li>✔ Akad/Pemberkatan Only</li>
-
-      </ul>
-      <button>Choose Package</button>
-    </div>
-
-    <!-- Package 2 -->
-    <div class="pricing-card">
-      <h3>Package 2</h3>
-      <p class="price">IDR 8.250.000</p>
-
-      <ul>
-        <li>✔ 8 Crew | Valid For 100 - 1000 pax</li>
-      </ul>
-      <button>Choose Package</button>
-    </div>
-
-    <!-- Package 3 -->
-    <div class="pricing-card">        
-      <h3>Package 3</h3>
-      <p class="price">IDR 10.500.000</p>
-
-      <ul>
-        <li>✔ 10 Crew | Valid For 1000-1500 pax</li>
-      </ul>
-      <button>Choose Package</button> 
-    </div>
-
-    <!-- Package 4 -->
-    <div class="pricing-card">        
-      <h3>Package 4</h3>
-      <p class="price">IDR 15.500.000</p>
-
-      <ul>
-        <li>✔ 15 Crew | Valid For 1500-2000 pax</li>
-      </ul>
-      <button>Choose Package</button> 
-    </div>
+    playButton2.addEventListener('click', toggleVideo2);
+    video2.addEventListener('click', toggleVideo2);
     
-  <div class="feature">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 00-2-2H5a2 2 0 00-2 2v4h18v-4zM7 10V5a5 5 0 0110 0v5" />
-    </svg>
-    <span>WhatsApp group family (H-2 weeks)</span>
-  </div>
+    video2.addEventListener('ended', () => {
+      videoContainer2.classList.remove('playing');
+    });
+  </script>
 
+  <img src="images/pengantinky2.jpg" alt="Gallery 10" class="gallery-item">
+  <img src="images/pengantinky3.jpg" alt="Gallery 11" class="gallery-item">
+  <img src="images/pengantinky5.jpg" alt="Gallery 13" class="gallery-item">
+  <img src="images/pengantinky6.jpg" alt="Gallery 14" class="gallery-item">
+</div>
+    </div>
+
+    <!-- nav buttons -->
+    <button class="gallery-nav left" id="galleryPrev2" aria-label="Previous slide">&#10094;</button>
+    <button class="gallery-nav right" id="galleryNext2" aria-label="Next slide">&#10095;</button>
+  </div>
 </section>
 
-<section class="strategy-section">
+<script>
+// inisialisasi slider ringan untuk galleryTrack2
+(function () {
+  const gallery = document.getElementById('galleryTrack2');
+  const next = document.getElementById('galleryNext2');
+  const prev = document.getElementById('galleryPrev2');
+  if (!gallery) return;
+
+  const getSlideWidth = () => gallery.clientWidth;
+  let index = 0;
+  const slides = Array.from(gallery.children);
+  const maxIndex = slides.length - 1;
+
+  function goTo(i) {
+    index = Math.max(0, Math.min(maxIndex, i));
+    gallery.scrollTo({ left: index * getSlideWidth(), behavior: 'smooth' });
+  }
+
+  next.addEventListener('click', () => {
+    if (index >= maxIndex) goTo(0); else goTo(index + 1);
+  });
+  prev.addEventListener('click', () => {
+    if (index <= 0) goTo(maxIndex); else goTo(index - 1);
+  });
+
+  window.addEventListener('resize', () => goTo(index));
+
+  gallery.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prev.click();
+    if (e.key === 'ArrowRight') next.click();
+  });
+  gallery.setAttribute('tabindex','0');
+
+  // touch swipe
+  let startX = 0, moved = 0;
+  gallery.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; moved = 0; }, { passive: true });
+  gallery.addEventListener('touchmove', (e) => { moved = e.touches[0].clientX - startX; }, { passive: true });
+  gallery.addEventListener('touchend', () => {
+    if (moved < -50) next.click();
+    else if (moved > 50) prev.click();
+    moved = 0;
+  });
+})();
+</script>
+
+<!-- New gallery section (Gallery Section 3) -->
+<section class="gallery-section" id="gallerySection3">
+  <div class="gallery-header">
+    <h2>More moments <br><span>we adore.</span></h2>
+    <p>More moments and highlights from our events.</p>
+  </div>
+
+  <div class="gallery-container">
+    <div class="gallery-grid" id="galleryTrack3">
+      <img src="images/pengantinromi1.jpg" alt="Gallery 15" class="gallery-item">
+      <div class="video-container" id="videoContainer3">
+        <div class="play-button-overlay" id="playButton3"></div>
+         <video id="promoVideo3" playsinline>
+         <source src="images/video3.mp4" type="video/mp4">
+         Browser kamu tidak mendukung video.
+        </video>
+      </div>
+      <img src="images/pengantinromi2.jpg" alt="Gallery 16" class="gallery-item">
+      <img src="images/pengantinromi3.jpg" alt="Gallery 17" class="gallery-item">
+      <img src="images/pengantinromi4.jpg" alt="Gallery 18" class="gallery-item">
+
+      <script>
+        const videoContainer3 = document.getElementById('videoContainer3');
+        const video3 = document.getElementById('promoVideo3');
+        const playButton3 = document.getElementById('playButton3');
+
+        function toggleVideo3() {
+          if (video3.paused) {
+            video3.play();
+            videoContainer3.classList.add('playing');
+          } else {
+            video3.pause();
+            videoContainer3.classList.remove('playing');
+          }
+        }
+
+        // Menambahkan event listener untuk klik
+        playButton3.addEventListener('click', toggleVideo3);
+        video3.addEventListener('click', toggleVideo3);
+      </script>
+    </div>
+
+    <!-- nav buttons for gallery 3 -->
+    <button class="gallery-nav left" id="galleryPrev3" aria-label="Previous slide">&#10094;</button>
+    <button class="gallery-nav right" id="galleryNext3" aria-label="Next slide">&#10095;</button>
+  </div>
+</section>
+
+<script>
+// inisialisasi slider ringan untuk galleryTrack3
+(function () {
+  const gallery = document.getElementById('galleryTrack3');
+  const next = document.getElementById('galleryNext3');
+  const prev = document.getElementById('galleryPrev3');
+  if (!gallery) return;
+
+  const getSlideWidth = () => gallery.clientWidth;
+  let index = 0;
+  const slides = Array.from(gallery.children);
+  const maxIndex = slides.length - 1;
+
+  function goTo(i) {
+    index = Math.max(0, Math.min(maxIndex, i));
+    gallery.scrollTo({ left: index * getSlideWidth(), behavior: 'smooth' });
+  }
+
+  next.addEventListener('click', () => {
+    if (index >= maxIndex) goTo(0); else goTo(index + 1);
+  });
+  prev.addEventListener('click', () => {
+    if (index <= 0) goTo(maxIndex); else goTo(index - 1);
+  });
+
+  window.addEventListener('resize', () => goTo(index));
+
+  gallery.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prev.click();
+    if (e.key === 'ArrowRight') next.click();
+  });
+  gallery.setAttribute('tabindex','0');
+
+  // touch swipe
+  let startX = 0, moved = 0;
+  gallery.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; moved = 0; }, { passive: true });
+  gallery.addEventListener('touchmove', (e) => { moved = e.touches[0].clientX - startX; }, { passive: true });
+  gallery.addEventListener('touchend', () => {
+    if (moved < -50) next.click();
+    else if (moved > 50) prev.click();
+    moved = 0;
+  });
+})();
+</script>
+
+<!-- wedding detail planner -->
+
+<section id="plans" class="strategy-section">
   <div class="strategy-container">
     <div class="section-title">
-    <h3>Wedding</h3>
-    <h3>Planner Detail</h3>
-   </div>
-
+      <h3>Wedding</h3>
+      <h3>Planner Detail</h3>
+    </div>
 
     <div class="wedding-features">
     <!-- fitur utama -->
@@ -318,10 +586,6 @@
         <i class="fa-solid fa-camera-retro"></i>
         <p>Pendampingan Prewed 1x (6–8 Hours)</p>
       </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-ring"></i>
-        <p>Koordinasi Pengurusan KUA</p>
-      </div>
 
       <div class="feature-item free-item">
         <i class="fa-solid fa-gift"></i>
@@ -333,99 +597,305 @@
   <button class="read-btn" id="toggleMore">Read More</button>
 </div>
 
-
-
     <div class="strategy-right">
       <div class="strategy-card">
-        <div class="price-tag">$200</div>
-        <img src="images/list1.jpg" alt="Silver Package">
+        <img src="images/list1.jpg" alt="Package 1">
         <div class="card-content">
-          <h3 class="silver">Silver Package</h3>
+          <h3 class="silver">PACKAGE I</h3>
           <ul>
-            <li>One photographer</li>
-            <li>Basic photo editing</li>
-            <li>6 hours of coverage</li>
-            <li>High-resolution digital images</li>
+            <p>IDR 13.500.000</p>
+            <p>10 Crew | Valid For 100 - 500 pax</p>
           </ul>
         </div>
       </div>
 
       <div class="strategy-card">
-        <div class="price-tag">$300</div>
-        <img src="images/list2.jpg" alt="Gold Package">
+        <img src="images/list2.jpg" alt="Package 2">
         <div class="card-content">
-          <h3 class="gold">Gold Package</h3>
+          <h3 class="gold">PACKAGE II</h3>
           <ul>
-            <li>Two photographers</li>
-            <li>Basic photo editing</li>
-            <li>8 hours of coverage</li>
-            <li>High-resolution digital images</li>
+            <p>IDR 15.500.000</p>
+            <p>12 Crew | Valid For 500 - 1000 pax</p>
           </ul>
         </div>
       </div>
 
       <div class="strategy-card">
-        <div class="price-tag">$400</div>
-        <img src="images/list3.jpg" alt="Platinum Package">
+        <img src="images/list3.jpg" alt="Package 3">
         <div class="card-content">
-          <h3 class="platinum">Platinum Package</h3>
+          <h3 class="platinum">PACKAGE III</h3>
           <ul>
-            <li>Two photographers</li>
-            <li>Basic photo editing</li>
-            <li>High-resolution digital images</li>
-            <li>Full-day coverage</li>
+            <p>IDR 18.500.000</p>
+            <p>15 Crew | Valid For 1000 - 1500 pax</p>
           </ul>
         </div>
       </div>
+    </div> <!-- .strategy-right -->
 
-
+    <!-- Terms & Conditions (ditambahkan di bawah strategy cards) -->
+    <div class="strategy-terms">
+      <h3>Terms &amp; Conditions</h3>
+      <ul>
+        <p>✔ Booking Fee Sebesar 2 JT Rupiah</p>
+        <p>✔ (DP yang Telah Masuk Tidak Dapat Di Kembalikan Jika Terjadi Pembatalan Sepihak Dari Pihak Pemesan).
+        <p>✔ Extra Day For Tradition Ceremony / Siraman Pengajian / Holy Matrimony RP. 3.000.000.</p> 
+        <p>✔ Semua Paket Hanya untuk Kota Bandung, Kabupaten Bandung & Kota Cimahi.</p>
+        <p>✔ Untuk Luar Daerah Bandung atau Jawa Barat Di Kenakan Transport dan Fee Additional (DI Sesuaikan).</p>
+      </ul>
+     
     </div>
-  </div>
+
+  </div> <!-- .strategy-container -->
 </section>
+
+
+<section class="pricing-section">
+  <div class="pricing-header">
+    <h2>Wedding Organizer Detail</h2>
+  </div>
+
+  <!-- Tambahan daftar layanan -->
+<div class="wo-feature-list">
+  <div class="feature">
+    <i class="fa-solid fa-user-tie"></i>
+    <span>Konsultasi Prepare Pernikahan</span>
+  </div>
+
+  <div class="feature">
+    <i class="fa-solid fa-calendar-days"></i>
+    <span>H-30 Wedding Progress</span>
+  </div>
+
+  <div class="feature">
+    <i class="fa-solid fa-list-check"></i>
+    <span>Koordinasi penjadwalan vendor</span>
+  </div>
+
+  <div class="feature">
+    <i class="fa-solid fa-clock"></i>
+    <span>Approx 8 hours on the wedding day<br> (akad/pemberkatan dan resepsi)</span>
+  </div>
+
+  <div class="feature">
+    <i class="fa-solid fa-shirt"></i>
+    <span>Attribute: handy talky, clothes</span>
+  </div>
+
+
+  <div class="feature">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>WhatsApp group pengantin</span>
+  </div>
+
+  <div class="feature">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>WhatsApp group family (H-2 weeks)</span>
+  </div>
+
+ <div class="feature">
+    <i class="fa-solid fa-file-lines"></i>
+    <span>Pembuatan rundown acara</span>
+  </div>
+
+  <div class="feature">
+    <i class="fa-solid fa-users"></i>
+    <span>Meeting keluarga 1x</span>
+  </div>
+
+  <div class="feature">
+    <i class="fa-solid fa-users"></i>
+    <span>Meeting all vendor 1x</span>
+  </div>
+
+  <div class="feature">
+    <i class="fa-solid fa-building"></i>
+    <span>Koordinasi pengurusan KUA</span>
+  </div>
+
+  <div class="free-bonus">
+    <strong>Free:</strong> Seserahan 10 box & Digital Invitation
+  </div>
+</div>
+
+
+  <div class="pricing-container">
+    <!-- Package 1 -->
+    <div class="pricing-card">
+      <h3>Package 1</h3>
+      <p class="price">IDR 6.500.000</p>
+
+      <ul>
+        <li>✔ 6 Crew | Valid For 100 - 300 pax</li>
+        <li>✔ Akad/Pemberkatan Only</li>
+
+      </ul>
+      <button>Choose Package</button>
+    </div>
+
+    <!-- Package 2 -->
+    <div class="pricing-card">
+      <h3>Package 2</h3>
+      <p class="price">IDR 8.250.000</p>
+
+      <ul>
+        <li>✔ 8 Crew | Valid For 100 - 1000 pax</li>
+      </ul>
+      <button>Choose Package</button>
+    </div>
+
+    <!-- Package 3 -->
+    <div class="pricing-card">        
+      <h3>Package 3</h3>
+      <p class="price">IDR 10.500.000</p>
+
+      <ul>
+        <li>✔ 10 Crew | Valid For 1000-1500 pax</li>
+      </ul>
+      <button>Choose Package</button> 
+    </div>
+
+    <!-- Package 4 -->
+    <div class="pricing-card">        
+      <h3>Package 4</h3>
+      <p class="price">IDR 15.500.000</p>
+
+      <ul>
+        <li>✔ 15 Crew | Valid For 1500-2000 pax</li>
+      </ul>
+      <button>Choose Package</button> 
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="pricing-card terms-card">        
+      <h3>Terms and Conditions</h3>
+
+      <ul>
+        <li>✔ Booking Sebesar 2 JT Rupiah</li>
+        <li>(DP yang telah masuk tidak dapat di kembalikan jika terjadi pembatalan sepihak dari pihak pemesan)</li>
+        <li>✔ Extra Day For Tradition Ceremony / Siraman Pengajian / Holy Matrimony Rp. 3.000.000</li>
+        <li>✔ Semua Paket Hanya untuk Kota Bandung, Kabupaten Bandung & Kota Cimahi</li>
+        <li>✔ Untuk di Daerah Luar Kota Bandung atau Jawa Barat di Kenakan Transport dan Fee Additional (Di Sesuaikan)</li>
+      </ul>
+      
+    </div>
+
+</section>
+
+
+
 
 <section class="wedding-service">
   <div class="overlay"></div>
-  <div class="content">
-    <div class="text">
-      <p class="sub-title">KL / Independent Benefits</p>
-      <h2>Exclusive Service For Your Wedding Party</h2>
-      <p class="desc">
-        We know this is one of the most important days of your life, and you want it to be a wedding everyone will talk about. Most importantly, you need to hire a company that cares as much as you do — our wedding planning company can turn everything to perfection.
-      </p>
 
-      <div class="info">
-        <div class="years">
-          <h3>18<sup>+</sup></h3>
-          <p>Years Experience</p>
-        </div>
-        <a href="#" class="btn">How We Work</a>
+  <div class="content">
+  <div class="text">
+  <div class="section-title">
+    <h3>Additional</h3>
+    <h3>Detail</h3>
+  </div>
+
+  <!-- SECTION ADDITIONAL -->
+<section class="additional-section">
+  <div class="overlay"></div>
+  <div class="content">
+
+    <div class="additional-items">
+      <div class="item">
+        <h3>ENGAGEMENT / BIRTH DAY</h3>
+        <p>IDR 6.500.000</p>
+        <p>APPROX 6 HOURS COVERAGE</p>
+        <p>4 CREW (ALL ATTRIBUTE, HANDY TALKY, CLOTHES)</p>
+        <p>MC ENGAGEMENT / BIRTHDAY / KHITANAN</p>
+        <p>WHATS APP GROUP</p>
+        <p>KONSULTASI PREPARATION</p>
+        <p>PEMBUATAN TIMELINE / CHECKLIST PREPARATION</p>
+        <p>PEMBUATAN RUNDOWN ACARA</p>
+        <p>KOORDINASI ALL VENDOR</p>
+        <p>MEETING ALL VENDOR 1X</p>
+        <p>FREE : HANTARAN 6 BOX</p>
       </div>
+
+
+      <div class="item">
+        <h3>PENGAJIAN SIRAMAN / MIDODARENI / NGEYEUK SEUREUH</h3>
+        <p>IDR 3.500.000</p>
+        <P>APPROX 6 HOURS COVERAGE</P>
+        <P>4 CREW (ALL ATTRIBUTE, HANDY TALKY, CLOTHES)</P>
+        <P>WHATS APP GROUP</P>
+        <P>KONSULTASI PREPARATION</P>
+        <P>PEMBUATAN TIMELINE / CHECKLIST PREPARATION</P>
+        <P>PEMBUATAN RUNDOWN ACARA</P>
+        <P>KOORDINASI ALL VENDOR</P>
+        <P>MEETING ALL VENDOR 1X</p>
+      </div>
+
+
+      <div class="item">
+        <h3>ADDITIONAL FULL DAY WEDDING</h3>
+        <p>IDR 2.000.000 (8 CREW)</p>
+      </div>
+
+      <div class="item">
+
+        <h3>ADDITIONAL CREW</h3>
+        <p>IDR 700.000</p>
+      </div>
+
+      <div class="item">
+
+        <h3>TERMS AND CONDITION</h3>
+        <p>BOOKING FEE SEBESAR 1 JT RUPIAH
+        (DP YANG TELAH <br> MASUK TIDAK DAPAT DI KEMBALIKAN JIKA TERJADI PEMBATALAN SEPIHAK
+        DARI PEMESAN)
+        </p>
+        <p>SEMUA PAKET HANYA UNTUK KOTA BANDUNG, KABUPATEN BANDUNG
+        & KOTA CIMAHI.</p>
+        <p>UNTUK LUAR DAERAH BANDUNG ATAU JAWA BARAT DI KENAKAN TRANSPORT 
+        DAN FEE ADDITIONAL (DI SESUAIKAN)</p>
+      </div>
+
     </div>
+  </div>
+</section>
+
+    
 
     <div class="images">
       <div class="img-grid">
-        <img src="images/galeri.jpg" alt="wedding" class="img-large">
-        <img src="images/galeri2.jpg" alt="wedding">
-        <img src="images/galeri4.jpg" alt="wedding">
-        <img src="images/galeri3.jpg" alt="wedding">
+        <img src="images/galeri-large.jpg" alt="wedding large" class="img-large">
+        <img src="images/galeri-wedding1.jpg" alt="wedding 1" class="img-small a">
+        <img src="images/galeri-wedding2.jpg" alt="wedding 2" class="img-small b">
+        <img src="images/galeri-wedding3.jpg" alt="wedding 3" class="img-small c">
       </div>
     </div>
   </div>
 </section>
+
+
 
 
   <!-- POPUP MENU GOJEK STYLE -->
   <div class="mobile-popup">
-    <a href="#">
+    <a href="#about">
       <i class="fas fa-user"></i>
       <span>About Us</span>
-    <a href="#">
+    </a>
+    <a href="#gallery">
+      <i class="fas fa-images"></i>
+      <span>Gallery</span>
+    </a>
+    <a href="#plans">
       <i class="fas fa-calendar-alt"></i>
       <span>Plans</span>
     </a>
-    <a href="#">
-      <i class="fas fa-images"></i>
-      <span>Portfolio</span>
+        <a href="#package">
+      <i class="fas fa-list-check"></i>
+      <span>Package</span>
+    </a>
+
+    <a href="https://wa.me/6282240480543?text=Halo%20Sore%20Wedding" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>Whatsapp</span>
     </a>
 
     </a>
@@ -435,18 +905,1438 @@
 
 </body>
 <script>
+
+
+  
+
   const toggleBtn = document.getElementById('toggleMore');
   const extra = document.querySelector('.extra-features');
   let expanded = false;
 
   toggleBtn.addEventListener('click', () => {
     expanded = !expanded;
-    extra.style.display = expanded ? 'block' : 'none';
+    extra.style.display = expanded ? 'grid' : 'none';
     toggleBtn.textContent = expanded ? 'Show Less' : 'Read More';
   });
 </script>
 
 
 
+<section id="package" class="engagement-section">
+  <div class="engagement-container">
+    <div class="section-title">
+      <h3>ENGAGEMENT</h3>
+      <h3>PACKAGE</h3>
+    </div>
 
+    <div class="engagement-left">
+      <div class="card-content">
+          <h3><i class="fa-solid fa-ring"></i> EXCLUDE VENUE & CATERING <br>IDR 15.850.000</h3>
+          
+        </div>
+    </div>
+
+        <div class="engagement-left">
+      <div class="card-content">
+          <h3><i class="fa-solid fa-person-dress"></i> MAKE UP</h3>
+          <ul>
+            <li><span>MAKE UP DAN HAIR <br> DO / HIJAB DO CPW</span></li>
+          </ul>
+        </div>
+    </div>
+
+      <div class="engagement-left">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-gift"></i> DECORATION</h3>
+          <ul>
+            <li><span>DECORATION BY PAPELACE</span></li>
+            <li><span>BACKDROP UKURAN 3 METER</span></li>
+            <li><span>WELCOME BOARD</span></li>
+            <li><span>MIXED FLOWER (80%:20%)</span></li>
+            <li><span>FLOORING & KARPET</span></li>
+            <li><span>SET MEJA DAN CENTERPIECE</span></li>
+            <li><span>KURSI 6 PCS + DEKORASI</span></li>
+            <li><span>STANDING FLOWER 2 PCS</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="engagement-left">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-person-dress"></i> MASTER OF CEREMONY</h3>
+          <ul>
+            <li><span>MASTER OF CEREMONY BASED </span>ON AVAIBILITY</li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="engagement-left">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-gift"></i> WEDDING ORGANIZER</h3>
+          <ul>
+            <li><span>WEDDING ORGANIZER BY </span>SORE WEDDING PLANNER</li>
+            <li><span>APPROX 6 </span>HOURS COVERAGE</li>
+            <li><span>5 TEAM</span>(ALL ATTRIBUTE, HANDY TALKY, CLOTHES)</li>
+            <li><span>KONSULTASI PREPARE LAMARAN</span></li>
+            <li><span>PEMBUATAN RUNDOWN</span>ACARA</li>
+            <li><span>MEETING ALL VENDOR</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="engagement-left">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-camera"></i> PHOTO & VIDEO</h3>
+          <ul>
+            <li>PHOTOGRAFER BY EL PROJECT</li>
+            <li>1 HARI LIPUTAN <br> PHOTO & VIDEO HARI H</li>
+            <li>A. 1 PHOTOGRAPHER</li>
+            <li>B. 1 VIDEOGRAPHER</li>
+            <li>C. 30 FILE EDITING</li>
+            <li>D. FILE PHOTO ON <br>FLASHDISK</li>
+            <li>E. CINEMATIC CLIP <br> 2-3 MENIT</li>
+          </ul>
+        </div>
+      </div>
+
+
+    <div class="engagement-right">
+
+      <div class="engagement-card">
+        <img src="images/hantaran2.jpg" alt="Engagement 2">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-gift"></i> <span>FREE 7 BOX </span> HANTARAN</h3>
+          <ul>
+          </ul>
+        </div>
+      </div>
+
+      <div class="engagement-card">
+        <img src="images/hantaran1.jpg" alt="Engagement 2">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-envelope"></i> <span>FREE DIGITAL </span> INVITATION</h3>
+          <ul>
+          </ul>
+        </div>
+      </div>
+
+      <div class="engagement-card">
+        <img src="images/hantaran3.jpg" alt="Engagement 3">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-gifts"></i> <span>FREE HAND </span> BOUQUET</h3>
+
+        </div>
+      </div>
+
+
+      <div class="engagement-card terms-card">        
+        <h3>TERMS AND CONDITION</h3>
+
+        <ul>
+          <li>✔ BOOKING FEE SEBESAR 1 JT RUPIAH
+            (DP YANG TELAH MASUK TIDAK DAPAT DI KEMBALIKAN JIKA TERJADI PEMBATALAN SEPIHAK
+            DARI PEMESAN)</li>
+          <li>✔ SEMUA PAKET HANYA UNTUK KOTA BANDUNG, KABUPATEN BANDUNG
+            & KOTA CIMAHI.</li>
+          <li>✔ UNTUK LUAR DAERAH BANDUNG ATAU JAWA BARAT DI KENAKAN TRANSPORT 
+            DAN FEE ADDITIONAL (DI SESUAIKAN)</li>
+        </ul> 
+
+    </div> <!-- .engagement-right -->
+
+  </div> <!-- .engagement-container -->
+</section>
+<section class="gold-package-section">
+  <div class="container">
+    <div class="section-title">
+      <h3>GOLD</h3>
+      <h3>PACKAGE</h3>
+    </div>
+
+    <div class="package-grid">
+      <!-- Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-hotel"></i> <span>EXCLUDE VENUE</span></li>
+            <li><i class="fa-solid fa-money-bill"></i> <span>IDR 111.600.000 / 1000 pax</span></li>
+            <li><i class="fa-solid fa-money-bill"></i> <span>IDR 106.500.000 / 900 pax</span></li>
+            <li><i class="fa-solid fa-money-bill"></i> <span>IDR 101.400.000 / 800 pax</span></li>
+            <li><i class="fa-solid fa-money-bill"></i> <span>IDR 91.200.000 / 600 pax</span></li>
+            <li><i class="fa-solid fa-money-bill"></i> <span>IDR 86.100.000 / 500 pax</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+        <div class="package-grid">
+      <!-- FREE Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-gifts"></i> <span>FREE 10 BOX HANTARAN</span></li>
+            <li><i class="fa-solid fa-envelope"></i> <span>FREE DIGITAL INVITATION</span></li>
+            <li><i class="fa-solid fa-person-dress"></i> <span>FREE MAKE UP PREWED</span></li>
+            <li><i class="fa-solid fa-hotel"></i> <span>FREE 1 NIGHT AT HOTEL</span></li>
+            <li><i class="fa-solid fa-camera"></i> <span>FREE PHOTOBOOTH /</span> VIDEOBOOTH</li>
+            <li><i class="fa-solid fa-list-check"></i> <span>FREE 2 GUEST BOOK</span></li>
+            <li><i class="fa-solid fa-holly-berry"></i> <span>FREE CONFETTY</span></li>
+            <li><i class="fa-solid fa-coins"></i> <span>FREE SEWA ALAT SAWER </span>+ BANTAIAN</li>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="package-grid">
+      <!-- MAKE UP & ATTIRE Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-person-dress"></i> <span>MAKE UP & ATTIRE</span></li>
+            <li><i class="fa-solid fa-children"></i> <span>MAKE UP AKAD & RESEPSI</span></li>
+            <li><i class="fa-solid fa-person-dress"></i> <span>HAIR DO / JILBAB </span>PENGANTIN AKAD & RESEPSI</li>
+            <li><i class="fa-solid fa-children"></i> <span>BAJU PENGANTIN </span>AKAD CPP</li>
+            <li><i class="fa-solid fa-user-tie"></i> <span>BUSANA
+            <li><i class="fa-solid fa-user-tie"></i> <span>BUSANA BAPAK KEDUA</span>MEMPELAI PENGANTIN 1X</li>
+            <li><i class="fa-solid fa-person-dress"></i> <span>MAKE UP + HAIR DO</span>/ JILBAB IBU</li>
+            <li><i class="fa-solid fa-ring"></i> <span>AKSESORIS PENGANTIN </span>READY STOCK</li>
+            <li><i class="fa-solid fa-holly-berry"></i> <span>RONCE MELATI</span>PENGANTIN</li>
+            <li><i class="fa-solid fa-children"></i> <span>BUSANA PENGANTIN</span>AKAD & RESEPSI</li>
+            <li><i class="fa-solid fa-user-group"></i> <span>BUSANA PAGAR</span>AYU 2 ORG</li>
+           
+      </div>
+    </div>
+
+    <div class="package-grid">
+      <!-- MAKE UP & ATTIRE Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-person-dress"></i> <span>MAKE UP & ATTIRE</span></li>
+            <li><i class="fa-solid fa-children"></i> <span>MAKE UP AKAD & RESEPSI</span></li>
+            <li><i class="fa-solid fa-person-dress"></i> <span>HAIR DO / JILBAB </span>PENGANTIN AKAD & RESEPSI</li>
+            <li><i class="fa-solid fa-children"></i> <span>BAJU PENGANTIN </span>AKAD CPP</li>
+            <li><i class="fa-solid fa-user-tie"></i> <span>BUSANA
+            <li><i class="fa-solid fa-user-tie"></i> <span>BUSANA BAPAK KEDUA</span>MEMPELAI PENGANTIN 1X</li>
+            <li><i class="fa-solid fa-person-dress"></i> <span>MAKE UP + HAIR DO</span>/ JILBAB IBU</li>
+            <li><i class="fa-solid fa-ring"></i> <span>AKSESORIS PENGANTIN </span>READY STOCK</li>
+            <li><i class="fa-solid fa-holly-berry"></i> <span>RONCE MELATI</span>PENGANTIN</li>
+            <li><i class="fa-solid fa-children"></i> <span>BUSANA PENGANTIN</span>AKAD & RESEPSI</li>
+            <li><i class="fa-solid fa-user-group"></i> <span>BUSANA PAGAR</span>AYU 2 ORG</li>
+           
+            <li><i class="fa-solid fa-gifts"></i> <span>HAND BOUQET</span></li>
+            <li><i class="fa-solid fa-hand"></i> <span>NAIL ART</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="package-grid">
+      <!-- decoration Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-solid fa-hotel"></i> <span>DEKORASI PELAMINAN </span> MAX 8 - 10 METER TINGGI 3 METER</li>
+            <li><i class="fa-solid fa-archway"></i> <span>PANGGUNG PELAMINAN  </span>10X3M (MENYESUAIKAN VENUE)</li>
+            <li><i class="fa-solid fa-gifts"></i> <span>RANGKAIAN BUNGA FRESH  </span>& ARTIFICIAL</li>
+            <li><i class="fa-solid fa-archway"></i> <span>TAMAN PELAMINAN </span></li>
+            <li><i class="fa-solid fa-list-check"></i> <span>SETTING AKAD (6 KURSI, </span> 1 MEJA + HIAS) </li>
+            <li><i class="fa-solid fa-list-check"></i> <span>BACKDROP PENERIMA </span>TAMU 1 SPOT 3MTR + MEJA</li>
+            <li><i class="fa-solid fa-camera"></i> <span>BACKDROP PHOTOBOOTH </span>3MTR</li>
+            <li><i class="fa-solid fa-music"></i> <span>BACKDROP MUSIK / PHOTO </span> GALLERY 3MTR (PILIH 1)</li>
+            <li><i class="fa-solid fa-archway"></i> <span>SET KURSI PELAMINAN </span></li>
+            <li><i class="fa-solid fa-gifts"></i> <span>2 BUAH KOTAK UANG </span></li>
+            <li><i class="fa-solid fa-archway"></i> <span>6 TITIK RANGKAI PIKOK</span></li>
+            <li><i class="fa-solid fa-archway"></i> <span>6 TITIK STANDING </span>FLOWER</li>
+            <li><i class="fa-solid fa-archway"></i> <span>1 GATE DEKORASI</span></li>
+            <li><i class="fa-solid fa-user-tie"></i> <span>1 PERGOLA GATE </span>3X3MTR</li>
+            <li><i class="fa-solid fa-chalkboard-user"></i> <span>WELCOMING SIGN</span></li>
+            <li><i class="fa-solid fa-id-card"></i> <span>CUTTING NAME </span></li>
+            <li><i class="fa-solid fa-archway"></i> <span>LAMPU STD.DEKOR </span>(SOROT)</li>
+            <li><i class="fa-solid fa-archway"></i> <span>FLOORING KAYU / KARPET </span>JALAN 15 METER (OPTIONAL)</li>
+            <li><i class="fa-solid fa-archway"></i> <span> JANUR </span></li>
+            <li><i class="fa-solid fa-user-group"></i> <span>JASA PEMASANGAN</span></li>
+            <li><i class="fa-solid fa-chalkboard"></i> <span>DESAIN 2D MOODBOARD </span>REVISI 1X</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="package-grid">
+      <!-- PHOTO & VIDEO  Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-solid fa-camera"></i> <span>PHOTO & VIDEO  </span> MAX 8 - 10 METER TINGGI 3 METER</li>
+            <li><i class="fa-solid fa-children"></i> <span>1 HARI PHOTO </span>SESSION PREWEDDING  <br>(5 JAM MAXIMAL 3 WARDROBE)</li>
+            <li><i class="fa-solid fa-user"></i> <span>1 PHOTOGRAFHER  </span></li>
+            <li><i class="fa-solid fa-user"></i> <span>1 VIDEOGRAFER</span></li>
+            <li><i class="fa-solid fa-file-fragment"></i> <span>2 PEMBESARAN 16RP +  </span> FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-file-fragment"></i> <span>8 BUAH 4RP +  </span>FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-film"></i> <span>VIDEO PREWEDDING CLIP  </span>DURASI 1 MENIT</li>
+            <li><i class="fa-solid fa-camera"></i> <span>8 JAM LIPUTAN PHOTO &  </span> VIDEO WEDDING / HARI H</li>
+            <li><i class="fa-solid fa-user-group"></i> <span>2 PHOTOGRAFER </span></li>
+            <li><i class="fa-solid fa-gifts"></i> <span>1 VIDEOGRAFER</span></li>
+            <li><i class="fa-solid fa-user"></i> <span>1 CREW</span></li>
+            <li><i class="fa-solid fa-images"></i> <span>2 ALBUM + BOX</span></li>
+            <li><i class="fa-solid fa-film"></i> <span>VIDEO 1 MINUTES</span></li>
+            <li><i class="fa-solid fa-film"></i> <span>VIDEO FULL EDITING </span></li>
+            <li><i class="fa-solid fa-images"></i> <span>FILE PHOTO FLASHDISK </span></li>
+            <li><i class="fa-solid fa-images"></i> <span>1 PHOTOPRINT 16RP  </span>+ FRAME</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="package-grid">
+      <!-- PHOTO & VIDEO  Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-solid fa-music"></i> <span>MUSIC ENTERTAINMENT  </span></li>
+            <li><i class="fa-solid fa-mic"></i> <span>VOCAL</span></li>
+            <li><i class="fa-solid fa-guitar"></i> <span>GUITAR</span></li>
+            <li><i class="fa-solid fa-drum"></i> <span>DRUM ELECTRIC</span></li>
+            <li><i class="fa-solid fa-music"></i> <span>SAXOPHONE</span> </li>
+            <li><i class="fa-solid fa-music"></i> <span>KEYBOARD  </span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+        <div class="package-grid">
+      <!-- PHOTO & VIDEO  Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-solid fa-burger"></i> <span>CATERING </span></li>
+            <li><i class="fa-solid fa-utensils"></i> <span>CATERING :  </span>BUFFET (7) & STALL (6-7)</li>
+            <li></i> <span>OR</span>
+            <li><i class="fa-solid fa-hote"></i> <span>HOTEL (FASILITAS  </span>TERGANTUNG PEMILIHAN HOTEL)</li>
+            <li><i class="fa-solid fa-contact"></i> <span>*DETAIL BOLEH DITANYAKAN KE KAMI YA :)</span> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+     <div class="package-grid">
+      <!-- master of ceremony Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-solid fa-champagne-glasses"></i> <span>MASTER OF CEREMONY </span></li>
+            <li><i class="fa-solid fa-microphone"></i> <span>MC AKAD & RESEPSI</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="package-grid">
+      <!-- WEDDING ORGANIZER Package Details -->
+      <div class="package-card">
+        <div class="card-content">
+          
+          <ul>
+            <li><i class="fa-solid fa-solid fa-user-group"></i> <span>WEDDING ORGANIZER  </span> MAX 8 - 10 METER TINGGI 3 METER</li>
+            <li><i class="fa-solid fa-clock"></i> <span>APPROX 8 HOURS  </span>WEDDING COVERAGE</li>
+            <li><i class="fa-solid fa-user-group"></i> <span>8 TEAM (ALL ATTRIBUTE,  </span>HANDY TALKU, CLOTHES) </li>
+            <li><i class="fa-solid fa-user"></i> <span>KONSULTASI PREPARE </span>PERNIKAHAN</li>
+            <li><i class="fa-solid fa-calendar"></i> <span>PEMBUATAN WEDDING </span> TIMELINE </li>
+            <li><i class="fa-solid fa-list-check"></i> <span>PEMBUATAN RUNDOWN </span>ACARA  </li>
+            <li><i class="fa-solid fa-person-dress"></i> <span>PENDAMPINGAN FITTING </span>3 - 4 X </li>
+            <li><i class="fa-solid fa-camera"></i> <span>MEETING KONSEP 1X </span>  </li>
+            <li><i class="fa-solid fa-user-group"></i> <span>MEETING DEKORASI 1X</span> </li>
+            <li><i class="fa-solid fa-gifts"></i> <span>MEETING FAMILY</span></li>
+            <li><i class="fa-solid fa-user"></i> <span>MEETING ALL VENDOR </span></li>
+            <li><i class="fa-solid fa-user-group"></i> <span>KOORDINASI </span>PENGURUSAN KUA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+<section class="vendor-gold-section">
+  <div class="container">
+    <div class="section-title">
+      <h3>VENDOR</h3>
+      <h3>GOLD PACKAGE</h3>
+    </div>
+
+    <div class="vendor-grid">
+  <!-- MUA -->
+  <div class="vendor-card">
+    <div class="vendor-slider" data-slider>
+      <div class="slides">
+        <div class="slide"><img src="images/mua-ernade.JPG" alt="MUA 1"></div>
+        <div class="slide"><img src="images/mua-ernade2.JPG" alt="MUA 2"></div>
+        <div class="slide"><img src="images/mua-ernade3.JPG" alt="MUA 3"></div>
+      </div>
+      <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+      <button class="slide-btn next" aria-label="Next">&#10095;</button>
+      <div class="dots"></div>
+    </div>
+    <div class="card-content">
+      <h3><i class="fa-solid fa-person-dress"></i> MUA</h3>
+      <ul>
+        <li><span>ERNADE OFFICIAL BY</span></li>
+        <li><span>NAYAH</span></li>
+        <li><span>TUTI TSW</span></li>
+        <li><span>MAISA HASNA</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DECORATION -->
+  <div class="vendor-card">
+    <div class="vendor-slider" data-slider>
+      <div class="slides">
+        <img src="images/kayaku.JPG" alt="Decoration 1">
+        <img src="images/kayaku2.JPG" alt="Decoration 2">
+        <img src="images/kayaku3.JPG" alt="Decoration 3">
+      </div>
+      <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+      <button class="slide-btn next" aria-label="Next">&#10095;</button>
+      <div class="dots"></div>
+    </div>
+    <div class="card-content">
+      <h3><i class="fa-solid fa-wand-magic-sparkles"></i> DECORATION</h3>
+      <ul>
+        <li><span>KAYUKU DECORA</span></li>
+        <li><span>PAPELACE</span></li>
+        <li><span>LIEBE DECORATION</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CATERING -->
+  <div class="vendor-card">
+    <div class="vendor-slider" data-slider>
+      <div class="slides">
+        <img src="images/kdm1.JPG" alt="Catering 1">
+        <img src="images/kdm2.JPG" alt="Catering 2">
+        <img src="images/kdm3.JPG" alt="Catering 3">
+        <img src="images/h2hbarokah.JPG" alt="Catering 4">
+        <img src="images/h2hbarokah2.JPG" alt="Catering 5">
+        <img src="images/h2hbarokah3.JPG" alt="Catering 6">
+      </div>
+      <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+      <button class="slide-btn next" aria-label="Next">&#10095;</button>
+      <div class="dots"></div>
+    </div>
+    <div class="card-content">
+      <h3><i class="fa-solid fa-burger"></i> CATERING</h3>
+      <ul>
+        <li><span>BUNGSUNA CATERING</span></li>
+        <li><span>H2 BAROKAH CATERING</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MASTER OF CEREMONY -->
+  <div class="vendor-card">
+    <div class="vendor-slider" data-slider>
+      <div class="slides">
+        <img src="images/ilmihasanmc.JPG" alt="MC 1">
+        <img src="images/imamadimc.JPG" alt="MC 2">
+      </div>
+      <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+      <button class="slide-btn next" aria-label="Next">&#10095;</button>
+      <div class="dots"></div>
+    </div>
+    <div class="card-content">
+      <h3><i class="fa-solid fa-champagne-glasses"></i> MASTER OF <br>CEREMONY</h3>
+      <ul>
+        <li><span>IMAM ADI MC</span></li>
+        <li><span>ILMI HASAN</span></li>
+        <li><span>ALIENDA HAPSARI</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHOTO & VIDEO -->
+  <div class="vendor-card">
+    <div class="vendor-slider" data-slider>
+      <div class="slides">
+        <img src="images/alfa1.JPG" alt="Photo 1">
+        <img src="images/alfa2.JPG" alt="Photo 2">
+        <img src="images/alfa3.JPG" alt="Photo 3">
+      </div>
+      <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+      <button class="slide-btn next" aria-label="Next">&#10095;</button>
+      <div class="dots"></div>
+    </div>
+    <div class="card-content">
+      <h3><i class="fa-solid fa-images"></i> PHOTO & VIDEO</h3>
+      <ul>
+        <li><span>EL PROJECT PHOTOGRAPHY</span></li>
+        <li><span>ALFA STUDIOS</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ENTERTAINMENT -->
+  <div class="vendor-card">
+    <div class="vendor-slider" data-slider>
+      <div class="slides">
+        <img src="images/romansa2.JPG" alt="Entertainment 1">
+        <img src="images/3d1.JPG" alt="Entertainment 2">
+      </div>
+      <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+      <button class="slide-btn next" aria-label="Next">&#10095;</button>
+      <div class="dots"></div>
+    </div>
+    <div class="card-content">
+      <h3><i class="fa-solid fa-music"></i> ENTERTAINMENT</h3>
+      <ul>
+        <li><span>ROMANSA MUSIC</span></li>
+        <li><span>3D MUSIC</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="platinum-paket">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="section-title">
+      <h3>PLATINUM</h3>
+      <h3>PAKET</h3>
+    </div>
+
+    <div class="platinum-grid">
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3></i> EXCLUDE VENUE</h3>
+          <p class="price"> <br> IDR 169.000.000</p>
+          <ul>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 139.150.000 / 500 pax</li>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 146.130.000 / 600 pax</li>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 154.200.000 / 700 pax</li>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 159.500.000 / 800 pax</li>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 165.654.000 / 900 pax</li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <ul>
+            <li><i class="fa-solid fa-gift"></i>FREE 10 BOX HANTARAN</li>
+            <li><i class="fa-solid fa-envelope"></i>DIGITAL INVITATION</li>
+            <li><i class="fa-solid fa-person-dress"></i>FREE MAKE UP PREWED</li>
+            <li><i class="fa-solid fa-hotel"></i>FREE 1 NIGHT AT HOTEL</li>
+            <li><i class="fa-solid fa-camera"></i>FREE PHOTOBOOTH / VIDEOBOOTH</li>
+            <li><i class="fa-solid fa-list-check"></i>FREE 2 GUEST BOOK</li>
+            <li><i class="fa-solid fa-user-group"></i>FREE WO CREW FOR LAMARAN / PENGSIR</li>
+            <li><i class="fa-solid fa-holly-berry"></i>FREE CONFETTY</li>
+            <li><i class="fa-solid fa-gifts"></i>FREE SEWA ALAT SAWER + BANTAIAN</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-archway"></i></h3>
+          <p class="price">DECORATION</p>
+          <ul>
+            <h3></i>AREA UTAMA :</h3>
+            <li><i class="fa-solid fa-children"></i>PELAMINAN 12 M</li>
+            <li><i class="fa-solid fa-gift"></i>FLOWER ARRANGMENT ON BACKDROP</li>
+            <li><i class="fa-solid fa-chair"></i>SET AKAD (MEJA, KURSI 6 PCS, CENTERPIECE)</li>
+            <li><i class="fa-solid fa-archway"></i>KARPET PERMADANI 1 PCS</li>
+            <li><i class="fa-solid fa-chair"></i>SOFA & KURSI PELAMINAN 3 PCS</li>
+          </ul>
+        </div>
+        
+        <div class="card-content">
+          <ul>
+            <h3>AREA TENGAH :</h3>
+            <li><i class="fa-solid fa-gift"></i>STANDING FLOWERS 6 - 8 PCS</li>
+            <li><i class="fa-solid fa-archway"></i>BUNGA JALUR JALAN</li>
+            <li><i class="fa-solid fa-archway"></i>GATE ENTRANCE 2 UNIT</li>
+            <li><i class="fa-solid fa-chair"></i>GAZEBO 4X4 M</li>
+            <li><i class="fa-solid fa-music"></i>BACKDROP MUSIK 3 METER</li>
+          </ul>
+        </div>
+
+        <div class="card-content">
+          <ul>
+            <h3>AREA DEPAN :</h3>
+            <li><i class="fa-solid fa-chalkboard"></i>WELCOME SIGN 1 UNIT</li>
+            <li><i class="fa-solid fa-table"></i>MEJA PENERIMA TAMU 1 UNIT</li>
+            <li><i class="fa-solid fa-box"></i>KOTAK ANGPAU 2 UNIT</li>
+            <li><i class="fa-solid fa-chair"></i>BACKDROP PENERIMA TAMU 3 METER</li>
+            <li><i class="fa-solid fa-camera"></i>BACKDROP PHOTOBOOTH 3 METER</li>
+            <li><i class="fa-solid fa-images"></i>BACKDROP GALERY PHOTO</li>
+          </ul>
+        </div>
+
+        <div class="card-content">
+          <ul>
+            <h3>OTHERS:</h3>
+            <li><i class="fa-solid fa-archway"></i>KOMPOSISI BUNGA MIX AND ARTIFICIAL</li>
+            <li><i class="fa-solid fa-gift"></i>BOUQUET LEMPAR</li>
+            <li><i class="fa-solid fa-lightbulb"></i>LIGHTING DEKORASI</li>
+          </ul>
+        </div>
+
+
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-person-dress"></i></h3>
+          <p class="price">MAKE UP & ATTIRE</p>
+          <ul>
+            <li>MAKE UP AKAD & RESEPSI</li>
+            <li>HAIR DO / JILBAB PENGANTIN AKAD & RESEPSI</li>
+            <li>BAJU PENGANTIN AKAD CPP</li>
+            <li>BUSANA + SAMPING IBU KEDUA MEM
+            <li>MAKE UP + HAIR DO/ JILBAB IBU</li>
+            <li>AKSESORIS PENGANTIN READY STOCK</li>
+            <li>RONCE MELATI PENGANTIN</li> 
+            <li>BUSANA PENGANTIN AKAD & RESEPSI</li>
+            <li>BUSANA PAGAR AYU 2 ORG</li>
+            <li>BUSANA PAGAR BAGUS 2 ORANG </li>
+            <li>HAND BOUQET</li>
+            <li>NAIL ART</li>
+            <li>SOFT LENS</li>
+          </ul>
+        </div>
+        
+
+
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-camera"></i></h3>
+          <p class="price">PHOTO & VIDEO</p>
+          <ul>
+            <li>1 HARI PHOTOSESSION PREWEDDING <br> (5 JAM MAXIMAL 3 WARDROBE)</li>
+            <li><i class="fa-solid fa-user-group"></i>1 PHOTOGRAPHER + 1 CREW</li>
+            <li><i class="fa-solid fa-user"></i>1 VIDEOGRAPHER</li>
+            <li><i class="fa-solid fa-images"></i>2 PEMBESARAN 16RP + FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-images"></i>8 BUAH 4RP + FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-film"></i>VIDEO PREWEDDING CLIP DURASI 1 MENIT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-camera"></i></h3>
+          <p class="price">PHOTO & VIDEO</p>
+          <ul>
+            <li>1 HARI PHOTOSESSION PREWEDDING <br> (5 JAM MAXIMAL 3 WARDROBE)</li>
+            <li><i class="fa-solid fa-user-group"></i>1 PHOTOGRAPHER + 1 CREW</li>
+            <li><i class="fa-solid fa-user"></i>1 VIDEOGRAPHER</li>
+            <li><i class="fa-solid fa-images"></i>2 PEMBESARAN 16RP + FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-images"></i>8 BUAH 4RP + FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-film"></i>VIDEO PREWEDDING CLIP DURASI 1 MENIT</li>
+          </ul>
+        </div>
+      </div>
+
+      
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-music"></i></h3>
+          <p class="price">MUSIC ENTERTAINMENT</p>
+          <ul>
+            <li><i class="fa-solid fa-user-group"></i>2 SINGER</li>
+            <li><i class="fa-solid fa-user"></i>1 VIDEOGRAPHER</li>
+            <li><i class="fa-solid fa-guitar"></i>BASS</li>
+            <li><i class="fa-solid fa-drum"></i>DRUM ELECTRIC</li>
+            <li><i class="fa-solid fa-music"></i>SAXOPHONE</li>
+            <li><i class="fa-solid fa-music"></i>KEYBOARD</li>
+            <li><i class="fa-solid fa-music"></i>SOUND SYSTEM 3000 WATT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-utensils"></i></h3>
+          <p class="price">CATERING</p>
+          <ul>
+            <li><i class="fa-solid fa-user-burger"></i>BUFFET (7 - 8) & STALL (9 - 11)</li>
+            <h3></i>ATAU</h3>
+            <li><i class="fa-solid fa-hotel"></i>HOTEL (FASILITAS TERGANTUNG PERMINTAAN HOTEL)</li>
+            <li><i class="fa-solid fa-smile"></i>*DETAIL BOLEH DITANYAKAN KE KAMI YA :) </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-user-tie"></i></h3>
+          <p class="price">MASTER OF CEREMONY</p>
+          <ul>
+            <li><i class="fa-solid fa-user-group"></i>MC AKAD & RESEPSI</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-people-roof"></i></h3>
+          <p class="price">WEDDING ORGANIZER</p>
+          <ul>
+            <li><i class="fa-solid fa-clock"></i>APPROX 8 HOURS WEDDING COVERAGE </li>
+            <li><i class="fa-solid fa-user-group"></i>10 TEAM (ALL ATTRIBUTE, HANDY TALKY, CLOTHES)</li>
+            <li><i class="fa-solid fa-comments"></i>KONSULTASI PREPARE PERNIKAHAN</li>
+            <li><i class="fa-solid fa-calendar"></i>PEMBUATAN WEDDING TIMELINE</li>
+            <li><i class="fa-solid fa-list-check"></i>PEMBUATAN RUNDOWN ACARA</li>
+            <li><i class="fa-solid fa-person-dress"></i>PENDAMPINGAN FITTING 3-4x </li>
+            <li><i class="fa-solid fa-comments"></i>MEETING KONSEP 1x</li>
+            <li><i class="fa-solid fa-comments"></i>MEETING DEKORASI 1x</li>
+            <li><i class="fa-solid fa-user-group"></i>MEETING FAMILY</li>
+            <li><i class="fa-solid fa-user-group"></i>MEETING ALL VENDOR</li>
+            <li><i class="fa-solid fa-user"></i>KOORDINASI PENGURUSAN KUA</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    
+
+  </div>
+</section>
+
+
+<section class="platinum-detail-vendor">
+  <!-- overlay removed -->
+  <div class="container">
+    <div class="section-title">
+      <h3>VENDOR DETAIL</h3>
+      <h3>PLATINUM PACKAGE</h3>
+    </div>
+
+    <div class="vendor-grid">
+      <div class="vendor-card">
+        <div class="vendor-slider" data-slider>
+          <div class="slides">
+            <img src="images/mua-ayung.JPG" alt="MUA 1">
+            <img src="images/nanath-mua.JPG" alt="MUA 2">
+            <img src="images/ernade-mua.JPG" alt="MUA 3">
+          </div>
+            <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+            <button class="slide-btn next" aria-label="Next">&#10095;</button>
+        <div class="dots"></div>
+      </div>
+        <div class="card-content">
+          <h4>MUA</h4>
+          <p>ERNADE OFFICIAL BY </p>
+          <p>VERA FERIAL</p>
+          <p> DANIKA DAVISCA</p>
+          <p> ARMEITA RIVALDI</p>
+          <p>ISMA WULANDARI</p>
+          <p>SENTAURI</p>
+          <p>EVA ORLIN ETC</p>
+          <br>
+          <P> AYUNG BERINDA BY</P>
+          <p> AYUNG BERINDA</p>
+          <P> EZZA SYAHREZA</P>
+          <P> RIZKI ICAN</P>
+          <P>WILDAN MAJID ETC</P>
+          <br>
+          <P> NAIRE BY NANATH NADIA </P>
+          <P> IREN ALDRIANA</P>
+          <P> SENTAURI</P>
+         
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <div class="vendor-slider" data-slider>
+          <div class="slides">
+            <img src="images/bagusmc.JPG" alt="moc 1">
+            <img src="images/donni-mc.JPG" alt="moc 2">
+            <img src="images/alemc.JPG" alt="moc 3">
+          </div>
+            <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+            <button class="slide-btn next" aria-label="Next">&#10095;</button>
+              <div class="dots"></div>
+        </div>
+        <div class="card-content">
+          <h4>MASTER OF CEREMONY</h4>
+          <p>BAGUS AU</p>
+          <p>ALE AULIA</p>
+          <p>IKHSAN FAUZI</p>
+          <p>DONNY ADHI KRISNA</p>
+          <p>IMAM ADI</p>
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <div class="vendor-slider" data-slider>
+          <div class="slides">
+            <img src="images/florkadecor1.JPG" alt="decoration 1">
+            <img src="images/florkadecor2.JPG" alt="decoration 2">
+            <img src="images/aksendecor1.JPG" alt="decoration 3">
+            <img src="images/aksendecor2.JPG" alt="decoration 4">
+            <img src="images/aksendecor3.JPG" alt="decoration 5">
+            <img src="images/gooverdecor.JPG" alt="decoration 6">
+            <img src="images/gooverdecor2.JPG" alt="decoration 7">
+          </div>
+            <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+            <button class="slide-btn next" aria-label="Next">&#10095;</button>
+              <div class="dots"></div>
+        </div>
+        <div class="card-content">
+          <h4>DECORATION</h4>
+          <p>FLORKA DECORATION</p>
+          <p>GROOVE DECORATION</p>
+          <p>AKSEN DECORATION</p>
+          <p>MENATA DESIGN</p>
+          <p>GEMPITA DECORATION</p>
+          <p>SEMUA VENDOR PAKET GOLD <br>(FASILITAS MENYESUAIKAN)</p>
+        </div>
+      </div>
+
+  
+
+      <div class="vendor-card">
+        <div class="vendor-slider" data-slider>
+          <div class="slides">
+            <img src="images/nesnumoto1.JPG" alt="photo & video 1">
+            <img src="images/nalovastudio.JPG" alt="photo & video 2">
+            <img src="images/nesnumoto2.JPG" alt="photo & video 3">
+            <img src="images/nalovastudio2.JPG" alt="photo & video 4">
+          </div>
+            <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+            <button class="slide-btn next" aria-label="Next">&#10095;</button>
+              <div class="dots"></div>
+        </div>
+        <div class="card-content">
+          <h4>PHOTO & VIDEO</h4>
+          <p>NESNUMOTO PHOTOGRAPHY</p>
+          <p>NALOVA PHOTOGRAPHY <br>(FASILITAS MENYESUAIKAN)</p>
+
+        </div>
+      </div>
+
+      
+      <div class="vendor-card">
+        <div class="vendor-slider" data-slider>
+          <div class="slides">
+            <img src="images/kc-catering.JPG" alt="catering">
+            <img src="images/kc-catering1.JPG" alt="photo & video 2">
+          </div>
+            <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+            <button class="slide-btn next" aria-label="Next">&#10095;</button>
+              <div class="dots"></div>
+        </div>
+       
+        <div class="card-content">
+          <h4>CATERING</h4>
+          <p>KARTIKA CATERING</p>
+          <p>SAMUDRA CATERING</p>
+
+        </div>
+      </div>
+
+      <div class="vendor-card">
+        <div class="vendor-slider" data-slider>
+          <div class="slides">
+            <img src="images/kphmusic1.JPG" alt="Entertainment 1">
+            <img src="images/electramusic1.JPG" alt="Entertainment 2">
+            <img src="images/3dmusic2.JPG" alt="Entertainment 3">
+          </div>
+            <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+            <button class="slide-btn next" aria-label="Next">&#10095;</button>
+              <div class="dots"></div>
+      </div>
+        <div class="card-content">
+          <h4>ENTERTAINMENT</h4>
+          <p>3D MUSIC</p>
+          <p>ELECTRA MUSIC</p>
+          <p>KPH MUSIC</p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="platinum-paket">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="section-title">
+      <h3>PLATINUM</h3>
+      <h3>PAKET</h3>
+    </div>
+
+    <div class="platinum-grid">
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3></i> EXCLUDE VENUE</h3>
+          <p class="price"> <br> IDR 169.000.000</p>
+          <ul>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 139.150.000 / 500 pax</li>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 146.130.000 / 600 pax</li>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 154.200.000 / 700 pax</li>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 159.500.000 / 800 pax</li>
+            <li><i class="fa-solid fa-money-bill"></i>IDR 165.654.000 / 900 pax</li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <ul>
+            <li><i class="fa-solid fa-gift"></i>FREE 10 BOX HANTARAN</li>
+            <li><i class="fa-solid fa-envelope"></i>DIGITAL INVITATION</li>
+            <li><i class="fa-solid fa-person-dress"></i>FREE MAKE UP PREWED</li>
+            <li><i class="fa-solid fa-hotel"></i>FREE 1 NIGHT AT HOTEL</li>
+            <li><i class="fa-solid fa-camera"></i>FREE PHOTOBOOTH / VIDEOBOOTH</li>
+            <li><i class="fa-solid fa-list-check"></i>FREE 2 GUEST BOOK</li>
+            <li><i class="fa-solid fa-user-group"></i>FREE WO CREW FOR LAMARAN / PENGSIR</li>
+            <li><i class="fa-solid fa-holly-berry"></i>FREE CONFETTY</li>
+            <li><i class="fa-solid fa-gifts"></i>FREE SEWA ALAT SAWER + BANTAIAN</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-archway"></i></h3>
+          <p class="price">DECORATION</p>
+          <ul>
+            <h3></i>AREA UTAMA :</h3>
+            <li><i class="fa-solid fa-children"></i>PELAMINAN 12 M</li>
+            <li><i class="fa-solid fa-gift"></i>FLOWER ARRANGMENT ON BACKDROP</li>
+            <li><i class="fa-solid fa-chair"></i>SET AKAD (MEJA, KURSI 6 PCS, CENTERPIECE)</li>
+            <li><i class="fa-solid fa-archway"></i>KARPET PERMADANI 1 PCS</li>
+            <li><i class="fa-solid fa-chair"></i>SOFA & KURSI PELAMINAN 3 PCS</li>
+          </ul>
+        </div>
+        
+        <div class="card-content">
+          <ul>
+            <h3>AREA TENGAH :</h3>
+            <li><i class="fa-solid fa-gift"></i>STANDING FLOWERS 6 - 8 PCS</li>
+            <li><i class="fa-solid fa-archway"></i>BUNGA JALUR JALAN</li>
+            <li><i class="fa-solid fa-archway"></i>GATE ENTRANCE 2 UNIT</li>
+            <li><i class="fa-solid fa-chair"></i>GAZEBO 4X4 M</li>
+            <li><i class="fa-solid fa-music"></i>BACKDROP MUSIK 3 METER</li>
+          </ul>
+        </div>
+
+        <div class="card-content">
+          <ul>
+            <h3>AREA DEPAN :</h3>
+            <li><i class="fa-solid fa-chalkboard"></i>WELCOME SIGN 1 UNIT</li>
+            <li><i class="fa-solid fa-table"></i>MEJA PENERIMA TAMU 1 UNIT</li>
+            <li><i class="fa-solid fa-box"></i>KOTAK ANGPAU 2 UNIT</li>
+            <li><i class="fa-solid fa-chair"></i>BACKDROP PENERIMA TAMU 3 METER</li>
+            <li><i class="fa-solid fa-camera"></i>BACKDROP PHOTOBOOTH 3 METER</li>
+            <li><i class="fa-solid fa-images"></i>BACKDROP GALERY PHOTO</li>
+          </ul>
+        </div>
+
+        <div class="card-content">
+          <ul>
+            <h3>OTHERS:</h3>
+            <li><i class="fa-solid fa-archway"></i>KOMPOSISI BUNGA MIX AND ARTIFICIAL</li>
+            <li><i class="fa-solid fa-gift"></i>BOUQUET LEMPAR</li>
+            <li><i class="fa-solid fa-lightbulb"></i>LIGHTING DEKORASI</li>
+          </ul>
+        </div>
+
+
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-person-dress"></i></h3>
+          <p class="price">MAKE UP & ATTIRE</p>
+          <ul>
+            <li>MAKE UP AKAD & RESEPSI</li>
+            <li>HAIR DO / JILBAB PENGANTIN AKAD & RESEPSI</li>
+            <li>BAJU PENGANTIN AKAD CPP</li>
+            <li>BUSANA + SAMPING IBU KEDUA MEM
+            <li>MAKE UP + HAIR DO/ JILBAB IBU</li>
+            <li>AKSESORIS PENGANTIN READY STOCK</li>
+            <li>RONCE MELATI PENGANTIN</li> 
+            <li>BUSANA PENGANTIN AKAD & RESEPSI</li>
+            <li>BUSANA PAGAR AYU 2 ORG</li>
+            <li>BUSANA PAGAR BAGUS 2 ORANG </li>
+            <li>HAND BOUQET</li>
+            <li>NAIL ART</li>
+            <li>SOFT LENS</li>
+          </ul>
+        </div>
+        
+
+
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-camera"></i></h3>
+          <p class="price">PHOTO & VIDEO</p>
+          <ul>
+            <li>1 HARI PHOTOSESSION PREWEDDING <br> (5 JAM MAXIMAL 3 WARDROBE)</li>
+            <li><i class="fa-solid fa-user-group"></i>1 PHOTOGRAPHER + 1 CREW</li>
+            <li><i class="fa-solid fa-user"></i>1 VIDEOGRAPHER</li>
+            <li><i class="fa-solid fa-images"></i>2 PEMBESARAN 16RP + FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-images"></i>8 BUAH 4RP + FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-film"></i>VIDEO PREWEDDING CLIP DURASI 1 MENIT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-camera"></i></h3>
+          <p class="price">PHOTO & VIDEO</p>
+          <ul>
+            <li>1 HARI PHOTOSESSION PREWEDDING <br> (5 JAM MAXIMAL 3 WARDROBE)</li>
+            <li><i class="fa-solid fa-user-group"></i>1 PHOTOGRAPHER + 1 CREW</li>
+            <li><i class="fa-solid fa-user"></i>1 VIDEOGRAPHER</li>
+            <li><i class="fa-solid fa-images"></i>2 PEMBESARAN 16RP + FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-images"></i>8 BUAH 4RP + FRAME MINIMALIS</li>
+            <li><i class="fa-solid fa-film"></i>VIDEO PREWEDDING CLIP DURASI 1 MENIT</li>
+          </ul>
+        </div>
+      </div>
+
+      
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-music"></i></h3>
+          <p class="price">MUSIC ENTERTAINMENT</p>
+          <ul>
+            <li><i class="fa-solid fa-user-group"></i>2 SINGER</li>
+            <li><i class="fa-solid fa-user"></i>1 VIDEOGRAPHER</li>
+            <li><i class="fa-solid fa-guitar"></i>BASS</li>
+            <li><i class="fa-solid fa-drum"></i>DRUM ELECTRIC</li>
+            <li><i class="fa-solid fa-music"></i>SAXOPHONE</li>
+            <li><i class="fa-solid fa-music"></i>KEYBOARD</li>
+            <li><i class="fa-solid fa-music"></i>SOUND SYSTEM 3000 WATT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-utensils"></i></h3>
+          <p class="price">CATERING</p>
+          <ul>
+            <li><i class="fa-solid fa-user-burger"></i>BUFFET (7 - 8) & STALL (9 - 11)</li>
+            <h3></i>ATAU</h3>
+            <li><i class="fa-solid fa-hotel"></i>HOTEL (FASILITAS TERGANTUNG PERMINTAAN HOTEL)</li>
+            <li><i class="fa-solid fa-smile"></i>*DETAIL BOLEH DITANYAKAN KE KAMI YA :) </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-user-tie"></i></h3>
+          <p class="price">MASTER OF CEREMONY</p>
+          <ul>
+            <li><i class="fa-solid fa-user-group"></i>MC AKAD & RESEPSI</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platinum-card">
+        <div class="card-content">
+          <h3><i class="fa-solid fa-people-roof"></i></h3>
+          <p class="price">WEDDING ORGANIZER</p>
+          <ul>
+            <li><i class="fa-solid fa-clock"></i>APPROX 8 HOURS WEDDING COVERAGE </li>
+            <li><i class="fa-solid fa-user-group"></i>10 TEAM (ALL ATTRIBUTE, HANDY TALKY, CLOTHES)</li>
+            <li><i class="fa-solid fa-comments"></i>KONSULTASI PREPARE PERNIKAHAN</li>
+            <li><i class="fa-solid fa-calendar"></i>PEMBUATAN WEDDING TIMELINE</li>
+            <li><i class="fa-solid fa-list-check"></i>PEMBUATAN RUNDOWN ACARA</li>
+            <li><i class="fa-solid fa-person-dress"></i>PENDAMPINGAN FITTING 3-4x </li>
+            <li><i class="fa-solid fa-comments"></i>MEETING KONSEP 1x</li>
+            <li><i class="fa-solid fa-comments"></i>MEETING DEKORASI 1x</li>
+            <li><i class="fa-solid fa-user-group"></i>MEETING FAMILY</li>
+            <li><i class="fa-solid fa-user-group"></i>MEETING ALL VENDOR</li>
+            <li><i class="fa-solid fa-user"></i>KOORDINASI PENGURUSAN KUA</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    
+
+  </div>
+</section>
+
+
+<section class="diamond-package-section">
+  <div class="container">
+    <div class="section-title">
+      <h3>DIAMOND</h3>
+      <h3>PACKAGE</h3>
+    </div>
+
+    <div class="diamond-grid">
+      <div class="diamond-card">
+        <div class="card-content">
+          <h3>EXCLUDE VENUE</h3>
+          <p class="price">IDR 308.300.000</p>
+          <ul>
+            <li><i class="fa-solid fa-gifts"></i> FREE 10 BOX HANTARAN</li>
+            <li><i class="fa-solid fa-user-envelope"></i> FREE DIGITAL INVITATION</li>
+            <li><i class="fa-solid fa-person-dress"></i> FREE MAKE UP PREWED</li>
+            <li><i class="fa-solid fa-hotel"></i> FREE 1 NIGHT AT HOTEL</li>
+            <li><i class="fa-solid fa-camera"></i> FREE PHOTOBOOTH / VIDEOBOOTH</li>
+            <li><i class="fa-solid fa-list-check"></i> FREE 2 GUEST BOOK</li>
+            <li><i class="fa-solid fa-user-group"></i> FREE WO CREW FOR LAMARAN / PENGSIR</li>
+            <li><i class="fa-solid fa-holly-berry"></i> FREE CONFETTY</li>
+            <li><i class="fa-solid fa-gifts"></i> FREE SEWA ALAT AT SAWER + BANTAIAN</li>
+
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="diamond-card">
+        <div class="card-content">
+          <h3> MAKE UP & ATTIRE</h3>
+          <ul>
+            <li><i class="fa-solid fa-children"></i>MAKE UP AKAD & RESEPSI</li>
+            <li><i class="fa-solid fa-person-dress"></i>HAIR DO / JILBAB PENGANTIN AKAD & RESEPSI</li>
+            <li><i class="fa-solid fa-children"></i> BAJU PENGANTIN AKAD CPP</li>
+            <li><i class="fa-solid fa-person-dress"></i> BUSANA + SAMPING IBU KEDUA MEMPELAI PENGANTIN</li>
+            <li><i class="fa-solid fa-person"></i> BUSANA BAP
+            <li><i class="fa-solid fa-person-dress"></i> BUSANA + SAMPING IBU KEDUA MEMPELAI PENGANTIN</li>
+            <li><i class="fa-solid fa-person"></i> BUSANA BAP
+          <p>DESTINY CATERING</p>
+          <p>KDM CATERING</p>
+        </div>
+      </div>
+
+      <!-- ENTERTAINMENT -->
+      <div class="vendor-card">
+        <div class="vendor-slider" data-slider>
+          <div class="slides">
+            <div class="slide"><img src="images/wijayamusic1.JPG" alt="Entertainment 1"></div>
+            <div class="slide"><img src="images/gegemusic1.JPG" alt="Entertainment 2"></div>
+          </div>
+          <button class="slide-btn prev" aria-label="Prev">&#10094;</button>
+          <button class="slide-btn next" aria-label="Next">&#10095;</button>
+        </div>
+        <div class="card-content">
+          <h4>ENTERTAINMENT</h4>
+          <p>GEGE GUMILAR</p>
+          <p>WIJAYA MUSIC</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Price List Package Vendor Section -->
+<section class="pricelist-package-vendor">
+  <div class="container">
+    <div class="pricelist-slider">
+      <button class="pricelist-nav prev" id="pricelistPrev" aria-label="Prev">&#10094;</button>
+
+  <div class="pricelist-track" id="pricelistTrack">
+    <img src="images/price-list-package1.jpg" alt="Price List Package 1" class="pricelist-img" tabindex="0">
+    <img src="images/price-list-package2.jpg" alt="Price List Package 2" class="pricelist-img" tabindex="0">
+    <img src="images/price-list-package3.jpg" alt="Price List Package 3" class="pricelist-img" tabindex="0">
+  </div>
+
+      <button class="pricelist-nav next" id="pricelistNext" aria-label="Next">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- Image Preview Modal -->
+  <div id="pricelistModal" class="modal" role="dialog" aria-hidden="true" aria-label="Image preview">
+    <button class="modal-close" aria-label="Close preview">&times;</button>
+    <img class="modal-content" id="previewImage" alt="">
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.getElementById('pricelistTrack');
+  const slides = Array.from(track.getElementsByClassName('pricelist-img'));
+  const prevBtn = document.getElementById('pricelistPrev');
+  const nextBtn = document.getElementById('pricelistNext');
+  const modal = document.getElementById('pricelistModal');
+  const modalImg = document.getElementById('previewImage');
+  const closeBtn = modal.getElementsByClassName('modal-close')[0];
+  
+  let currentSlide = 0;
+
+  // Slider Navigation
+  function updateSlidePosition() {
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlidePosition();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlidePosition();
+  });
+
+  // Image Preview
+  slides.forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Keyboard Navigation
+  document.addEventListener('keydown', (e) => {
+    if (modal.style.display === "block" && e.key === "Escape") {
+      modal.style.display = "none";
+    }
+    if (e.key === "ArrowLeft") prevBtn.click();
+    if (e.key === "ArrowRight") nextBtn.click();
+  });
+
+  // Touch Support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, false);
+
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    handleSwipe();
+  }, false);
+
+  function handleSwipe() {
+    if (touchStartX - touchEndX > 50) {
+      nextBtn.click(); // Swipe left
+    }
+    if (touchEndX - touchStartX > 50) {
+      prevBtn.click(); // Swipe right
+    }
+  }
+});
+</script>
+<!-- image preview modal -->
+<div id="imgModal" class="img-modal" aria-hidden="true">
+  <button class="img-modal-close" aria-label="Close preview">&times;</button>
+  <img class="img-modal-content" id="imgModalContent" alt="">
+  <div class="img-modal-caption" id="imgModalCaption"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const img = document.getElementById('pricelistImg');
+  const modal = document.getElementById('imgModal');
+  const modalImg = document.getElementById('imgModalContent');
+  const caption = document.getElementById('imgModalCaption');
+  const closeBtn = modal.querySelector('.img-modal-close');
+
+  function openModal(src, alt) {
+    modal.style.display = 'flex';
+    modalImg.src = src;
+    modalImg.alt = alt || '';
+    caption.textContent = alt || '';
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    modalImg.src = '';
+  }
+
+  if (img) {
+    img.addEventListener('click', () => openModal(img.src, img.alt));
+  }
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+});
+</script>
+
+<!-- Slider initialization for vendor cards -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.getElementById('pricelistTrack');
+  const prevBtn = document.getElementById('pricelistPrev');
+  const nextBtn = document.getElementById('pricelistNext');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const slides = Array.from(track.querySelectorAll('img.pricelist-img'));
+  let index = 0;
+
+  const update = () => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  };
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length; // wrap-around
+    update();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % slides.length; // wrap-around
+    update();
+  });
+
+  // keyboard support when track focused
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+
+  // optional: touch swipe
+  let startX = 0, moved = 0, dragging = false;
+  track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; dragging = true; moved = 0; }, { passive: true });
+  track.addEventListener('touchmove', (e) => { if (!dragging) return; moved = e.touches[0].clientX - startX; }, { passive: true });
+  track.addEventListener('touchend', () => {
+    dragging = false;
+    if (moved > 50) prevBtn.click();
+    else if (moved < -50) nextBtn.click();
+    moved = 0;
+  });
+
+  // init
+  update();
+});
+</script>
+<!-- pastikan ini ditempatkan sebelum penutup </body> -->
+<script>
+(function () {
+  document.querySelectorAll('[data-slider]').forEach((sliderEl) => {
+    if (sliderEl.dataset.sliderInited) return;
+    sliderEl.dataset.sliderInited = '1';
+
+    const slidesWrap = sliderEl.querySelector('.slides');
+    if (!slidesWrap) return;
+
+    // Normalize slides: accept .slide wrappers or direct imgs
+    let slides = Array.from(slidesWrap.querySelectorAll('.slide'));
+    if (slides.length === 0) {
+      // wrap imgs as slides virtually
+      const imgs = Array.from(slidesWrap.querySelectorAll('img'));
+      slides = imgs.map((img) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        slide.appendChild(img.cloneNode(true));
+        return slide;
+      });
+      // replace children of slidesWrap with proper slide nodes
+      slidesWrap.innerHTML = '';
+      slides.forEach(s => slidesWrap.appendChild(s));
+    }
+
+    // Create nav buttons if missing
+    let prevBtn = sliderEl.querySelector('.slide-btn.prev');
+    let nextBtn = sliderEl.querySelector('.slide-btn.next');
+
+    if (!prevBtn) {
+      prevBtn = document.createElement('button');
+      prevBtn.className = 'slide-btn prev';
+      prevBtn.setAttribute('aria-label', 'Prev');
+      prevBtn.innerHTML = '&#10094;'; // left chevron
+      sliderEl.appendChild(prevBtn);
+    }
+    if (!nextBtn) {
+      nextBtn = document.createElement('button');
+      nextBtn.className = 'slide-btn next';
+      nextBtn.setAttribute('aria-label', 'Next');
+      nextBtn.innerHTML = '&#10095;'; // right chevron
+      sliderEl.appendChild(nextBtn);
+    }
+
+    let index = 0;
+    const update = () => {
+      slidesWrap.style.transform = `translateX(-${index * 100}%)`;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + slides.length) % slides.length;
+      update();
+    });
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % slides.length;
+      update();
+    });
+
+    // touch support
+    let startX = 0, moved = 0, dragging = false;
+    slidesWrap.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      dragging = true;
+      moved = 0;
+    }, { passive: true });
+    slidesWrap.addEventListener('touchmove', (e) => {
+      if (!dragging) return;
+      moved = e.touches[0].clientX - startX;
+    }, { passive: true });
+    slidesWrap.addEventListener('touchend', () => {
+      dragging = false;
+      if (moved > 40) index = (index - 1 + slides.length) % slides.length;
+      else if (moved < -40) index = (index + 1) % slides.length;
+      moved = 0;
+      update();
+    });
+
+    // keyboard support
+    sliderEl.setAttribute('tabindex','0');
+    sliderEl.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+
+    // initial layout
+    update();
+    // ensure transform applied on resize
+    new ResizeObserver(() => update()).observe(slidesWrap);
+  });
+})();
+</script>
+    <script src="pricelist-slider.js"></script>
+</body>
 </html>
