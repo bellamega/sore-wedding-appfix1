@@ -2742,7 +2742,7 @@ body {
 .diamond-package-section {
   position: relative;
   padding: 70px 5%;
-  background: url('images/diamondbg.JPG') no-repeat center/cover;
+  background: url('images/diamondbg.jpg') no-repeat center/cover;
   background-size: cover;
   color: #0b09a5;
   box-sizing: border-box;
@@ -3220,4 +3220,5 @@ body { -ms-overflow-style: none; scrollbar-width: thin; }
 [style*="left: -"], [style*="right: -"] {
   max-width: 100%;
   box-sizing: border-box;
+
 }
